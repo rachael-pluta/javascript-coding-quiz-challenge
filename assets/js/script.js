@@ -1,3 +1,4 @@
+var startQuiz() = document.getElementById('start-quiz')
 
 // Sets the questions and answers to the quiz
 var Questions =[ {
@@ -49,5 +50,16 @@ var Questions =[ {
     id = 5,
     q: ""
 }
-
 ]
+
+function startQuiz(){
+
+}
+
+function displayQuestion(){
+
+}
+
+function displayAnswer(){
+    
+}
