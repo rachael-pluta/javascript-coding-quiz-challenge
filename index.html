@@ -5,12 +5,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Coding Challenge Quiz</title>
+    <title>Coding Challenge Quiz</title>
     <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <button id="start-quiz" class = "btn">Start Quiz!</button>
+    <div class = "container">
+        <div id="start-page">
+            <h1 id="countdown" class="timer"></h1>
+            <h2 id="quiz-heading" class="quiz-h">Coding Quiz Challenge</h2>
+            <p id="start-para" class="start-p">Try to answer the following code-related questions within the time limit.  Keep in mind that incorrect answers will penalise your time by ten seconds!</p>
+        </div>
+        <div id="question-container" class="hidden">
+            <div id="questions" class="question">Question</div>
+            <div id="answer-button" class="ans-btns">
+                <button class="answer-btn">Answer 1</button>
+                <button class="answer-btn">Answer 2</button>
+                <button class="answer-btn">Answer 3</button>
+                <button class="answer-btn">Answer 4</button>
+            </div>
+        </div>
+        <div class="quiz-controls">
+            <button id="start-quiz" class="start-button">Start Quiz!</button>
+            <button id="next" class="next-button hidden">Next</button>
+        </div>
+        <div id="finish-page">
+            <h2 id="quiz-heading" class="quiz-h"></h2>
+            <p id="final-score" class="hidden">Your final score is:</p>
+            <div class="input-initials hidden">
+                <label for="initials">Initials:</label>
+                <input type="text"
+            </div>
+        </div>
+    </div>
     <script src="assets/js/script.js"></script>
 </body>
 

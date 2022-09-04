@@ -1,0 +1,123 @@
+/* Sets box sizing to border box for all elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --bg-neutral: pink;
+    --bg-correct: palegreen;
+    --bg-wrong: palevioletred;
+}
+
+body {
+    background-color: white; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+body.correct {
+    background-color: var(--bg-correct);
+}
+
+body.wrong {
+    background-color: var(--bg-wrong);
+}
+
+.container {
+    width: 900px;
+    max-width: 90%;
+    height: 300px;
+    max-height: 90%;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.container.correct {
+    background-color: var(--bg-correct);
+}
+
+.container.wrong {
+    background-color: var(--bg-wrong);
+}
+
+.timer {
+    position: relative; 
+    top: 5px;
+    left: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.quiz-h {
+    padding-top: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.start-p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.question {
+    font-weight: bold;
+}
+
+.ans-btns {
+    display: grid;
+    gap: 10px;
+    margin: 20px; 0;
+}
+
+.answer-btn {
+    background-color: var(--bg-neutral);
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.answer-btn:hover, .start-button:hover, .next-button:hover {
+    border-color: black;
+}
+
+.answer-btn-correct {
+    background-color: var(--bg-correct);
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.answer-btn-wrong {
+    background-color: var(--bg-wrong);
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-button, .next-button {
+    background-color: var(--bg-neutral);
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
