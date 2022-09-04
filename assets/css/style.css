@@ -42,18 +42,10 @@ body.wrong {
     position: absolute;
 }
 
-.container.correct {
-    background-color: var(--bg-correct);
-}
-
-.container.wrong {
-    background-color: var(--bg-wrong);
-}
-
 .timer {
     position: relative; 
-    top: 5px;
-    left: 10px;
+    bottom: 5px;
+    left: 230px;
     font-weight: bold;
     font-size: 12px;
 }
@@ -105,16 +97,29 @@ body.wrong {
     outline: none;
 }
 
+.submit-h {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.input-initials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .quiz-controls {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.start-button, .next-button {
+.start-button, .submit-button, .restart-button {
     background-color: var(--bg-neutral);
     border-radius: 5px;
     padding: 5px 10px;
+    margin-top: 10px;
     outline: none;
 }
 
