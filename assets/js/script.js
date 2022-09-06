@@ -8,38 +8,57 @@ var questionsElement = document.getElementById('questions')
 var answersElement = document.getElementById('answer-button')
 var submitPage = document.getElementById('submit-page')
 var submitButton = document.getElementById('submit')
+var timeLeft = 60;
+var correctMsg = document.getElementById('correct-msg')
+var finalScore = document.getElementById('final-score')
+var userScore = []
+var initials = document.getElementById('initials')
 
 
 // Event listeners on button clicks
 startButton.addEventListener('click', countdown)
 startButton.addEventListener('click', startQuiz)
-answersElement.addEventListener('click', () => {
+answersElement.addEventListener('click', function(event) {
+    
+    var buttonText = event.target.textContent
+    if (questions[currentQuestion].ans.findIndex(function (element){
+        console.log(element.text, buttonText)
+        return element.text === buttonText && element.isCorrect === true
+    }) > -1) {
+        correctMsg.textContent = 'Correct!'
+        document.body.classList.add('correct')
+    }
+    else {
+        correctMsg.textContent = 'Incorrect!'
+        document.body.classList.add('wrong')
+        timeLeft = timeLeft - 5
+    }
     currentQuestion++
-    determineQuestion()
+    setTimeout(determineQuestion, 500)
 })
 submitButton.addEventListener('click', showHighScores)
+
 
 // Sets the quiz timer
 function countdown() {
     console.log('started timer')
-    var timeLeft = 60;
 
     var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
     if (timeLeft > 1) {
       // Set the `textContent` of `timerElement` to show the remaining seconds
-      timerElement.textContent = timeLeft + ' seconds left';
+      timerElement.textContent = timeLeft + ' seconds left'
       // Decrement `timeLeft` by 1
       timeLeft--;
     } else if (timeLeft === 1) {
       // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerElement.textContent = timeLeft + ' second left';
+      timerElement.textContent = timeLeft + ' second left'
       timeLeft--;
     } else {
       // Once `timeLeft` gets to 0, set `timerElement` to an empty string
-      timerElement.textContent = '';
+      timerElement.textContent = ''
       // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval);
+      clearInterval(timeInterval)
       // Call the `allDone()` function
       allDone();
     }
@@ -57,6 +76,8 @@ function startQuiz() {
 }
 
 function determineQuestion() {
+    correctMsg.textContent = ''
+    document.body.classList = ''
     resetState()
     displayQuestion(randomisedQuestions[currentQuestion])
     questions.answers
@@ -88,12 +109,9 @@ function resetState() {
 function chooseAnswer(e) {
     var chosenAnswer = e.target
     var isCorrect = chosenAnswer.dataset.isCorrect
-    setCorrectStatus(document.body, isCorrect)
     Array.from(answersElement.children).forEach(ansbtn => {
-        setCorrectStatus(ansbtn, ansbtn.dataset.isCorrect)
     })
     if (randomisedQuestions.length > currentQuestion + 1) {
-        nextButton.classList.remove('hidden')
     }
     else {
         allDone()
@@ -116,20 +134,31 @@ function clearCorrectStatus(element) {
 }
 
 function allDone() {
-    var finalScoreElement = document.getElementById('final-score')
     questionContainer.classList.add('hidden')
+    timerElement.classList.add('hidden')
     submitPage.classList.remove('hidden')
     mainHeading.classList.remove('hidden')
     mainHeading.innerText = 'Submit your score!'
-    finalScoreElement.classList.remove('hidden')
     submitButton.classList.remove('hidden')
+    finalScore.textContent = 'Your final score is: ' + timeLeft
     showHighScores()
 }
 
+// Change this function to submitHighScores
 function showHighScores() {
-    var initials = document.getElementById('initials')
-    localStorage.setItem('initials', initials.val())
+    userScore.push({
+       initials: initials.value, 
+       finalScore: timeLeft
+    })
+    localStorage.setItem('initials', JSON.stringify(userScore))
 }
+
+// Create function showHighScores
+// userScores = JSON.parse(localStorage.getItem('initials'))
+// then do a loop on userScores
+// once you have data, create li's inside ol's
+
+
 
 // Quiz questions
 var questions = [
