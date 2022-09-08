@@ -156,7 +156,10 @@ function submitHighScores() {
 
 submitButton.addEventListener('click', showHighScores)
 
+function showHighScores() {
+    userScore = JSON.parse(localStorage.getItem('initials'))
 
+}
 // Create function showHighScores
 // userScores = JSON.parse(localStorage.getItem('initials'))
 // then do a loop on userScores
