@@ -15,28 +15,8 @@ var userScore = []
 var initials = document.getElementById('initials')
 
 
-// Event listeners on button clicks
+// Starts the timer on clicking start quiz button
 startButton.addEventListener('click', countdown)
-startButton.addEventListener('click', startQuiz)
-answersElement.addEventListener('click', function(event) {
-    
-    var buttonText = event.target.textContent
-    if (questions[currentQuestion].ans.findIndex(function (element){
-        console.log(element.text, buttonText)
-        return element.text === buttonText && element.isCorrect === true
-    }) > -1) {
-        correctMsg.textContent = 'Correct!'
-        document.body.classList.add('correct')
-    }
-    else {
-        correctMsg.textContent = 'Incorrect!'
-        document.body.classList.add('wrong')
-        timeLeft = timeLeft - 5
-    }
-    currentQuestion++
-    setTimeout(determineQuestion, 500)
-})
-submitButton.addEventListener('click', showHighScores)
 
 
 // Sets the quiz timer
@@ -64,6 +44,9 @@ function countdown() {
     }
   }, 1000);
 }
+
+// Starts the quiz questions on clicking start quiz button
+startButton.addEventListener('click', startQuiz)
 
 function startQuiz() {
     console.log('Started')
@@ -106,6 +89,24 @@ function resetState() {
     }
 }
 
+answersElement.addEventListener('click', function(event) {
+    var buttonText = event.target.textContent
+    if (questions[currentQuestion].ans.findIndex(function (element){
+        console.log(element.text, buttonText)
+        return element.text === buttonText && element.isCorrect === true
+    }) > -1) {
+        correctMsg.textContent = 'Correct!'
+        document.body.classList.add('correct')
+    }
+    else {
+        correctMsg.textContent = 'Incorrect!'
+        document.body.classList.add('wrong')
+        timeLeft = timeLeft - 5
+    }
+    currentQuestion++
+    setTimeout(determineQuestion, 500)
+})
+
 function chooseAnswer(e) {
     var chosenAnswer = e.target
     var isCorrect = chosenAnswer.dataset.isCorrect
@@ -141,17 +142,20 @@ function allDone() {
     mainHeading.innerText = 'Submit your score!'
     submitButton.classList.remove('hidden')
     finalScore.textContent = 'Your final score is: ' + timeLeft
-    showHighScores()
+    submitHighScores()
 }
 
 // Change this function to submitHighScores
-function showHighScores() {
+function submitHighScores() {
     userScore.push({
        initials: initials.value, 
        finalScore: timeLeft
     })
     localStorage.setItem('initials', JSON.stringify(userScore))
 }
+
+submitButton.addEventListener('click', showHighScores)
+
 
 // Create function showHighScores
 // userScores = JSON.parse(localStorage.getItem('initials'))
