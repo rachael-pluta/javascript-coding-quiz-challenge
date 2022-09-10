@@ -21,6 +21,7 @@ Once completed, the user can input their initials and save their score by clicki
 ![Blue box displaying user's final score and submission box for user to input initials](https://raw.githubusercontent.com/rachael-pluta/javascript-coding-quiz-challenge/main/assets/images/final-score.png)
 
 ## Deployed Webpage
+Available here [https://rachael-pluta.github.io/javascript-coding-quiz-challenge/].
 
 ## Credits
 N/A
