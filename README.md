@@ -8,12 +8,17 @@ N/A
 
 ## Usage
 Click on the start quiz button to start the timer and display the first question.  
+![Blue box with pink button prompting the user to start coding quiz](https://raw.githubusercontent.com/rachael-pluta/javascript-coding-quiz-challenge/main/assets/images/start-quiz.png)
+
+![Blue box with timer with timer in top left corner, with first quiz question and four possible answers in pink boxes](https://raw.githubusercontent.com/rachael-pluta/javascript-coding-quiz-challenge/main/assets/images/example-question-1.png)
 
 Click on one of the four possible answers to move to the next question.  If you get the answer wrong, the timer will deduct 5 seconds.
 
 The quiz will finish when the timer runs out or the user has completed all questions.
 
 Once completed, the user can input their initials and save their score by clicking on the submit button.
+
+![Blue box displaying user's final score and submission box for user to input initials](https://raw.githubusercontent.com/rachael-pluta/javascript-coding-quiz-challenge/main/assets/images/final-score.png)
 
 ## Deployed Webpage
 
