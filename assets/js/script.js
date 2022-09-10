@@ -8,7 +8,7 @@ var questionsElement = document.getElementById('questions')
 var answersElement = document.getElementById('answer-button')
 var submitPage = document.getElementById('submit-page')
 var submitButton = document.getElementById('submit')
-var timeLeft = 60;
+var timeLeft = 120;
 var correctMsg = document.getElementById('correct-msg')
 var finalScore = document.getElementById('final-score')
 var userScore = []
@@ -16,12 +16,7 @@ var initials = document.getElementById('initials')
 
 
 // Starts the timer on clicking start quiz button
-startButton.addEventListener('click', countdown)
-
-
-// Sets the quiz timer
-function countdown() {
-    console.log('started timer')
+startButton.addEventListener('click', function (countdown) {
 
     var timeInterval = setInterval(function () {
         // As long as the `timeLeft` is greater than 1
@@ -37,13 +32,11 @@ function countdown() {
         } else {
             // Once `timeLeft` gets to 0, set `timerElement` to an empty string
             timerElement.textContent = ''
-            // Use `clearInterval()` to stop the timer
-            clearInterval(timeInterval)
             // Call the `allDone()` function
-            allDone();
+            allDone()
         }
-    }, 1000);
-}
+    }, 1000)
+})
 
 // Starts the quiz questions on clicking start quiz button
 startButton.addEventListener('click', startQuiz)
@@ -142,6 +135,7 @@ function allDone() {
     mainHeading.innerText = 'Submit your score!'
     submitButton.classList.remove('hidden')
     finalScore.textContent = 'Your final score is: ' + timeLeft
+    clearInterval(timeInterval)
     submitHighScores()
 }
 
@@ -155,14 +149,9 @@ submitButton.addEventListener('click', function (submitHighScores) {
 
 function showHighScores() {
     userScore = JSON.parse(localStorage.getItem('userScore'))
-
+    // then do a loop on userScores
+    // once you have data, create li's inside ol's
 }
-// Create function showHighScores
-// userScores = JSON.parse(localStorage.getItem('initials'))
-// then do a loop on userScores
-// once you have data, create li's inside ol's
-
-
 
 // Quiz questions
 var questions = [
