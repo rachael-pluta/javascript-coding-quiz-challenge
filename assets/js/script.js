@@ -24,25 +24,25 @@ function countdown() {
     console.log('started timer')
 
     var timeInterval = setInterval(function () {
-    // As long as the `timeLeft` is greater than 1
-    if (timeLeft > 1) {
-      // Set the `textContent` of `timerElement` to show the remaining seconds
-      timerElement.textContent = timeLeft + ' seconds left'
-      // Decrement `timeLeft` by 1
-      timeLeft--;
-    } else if (timeLeft === 1) {
-      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerElement.textContent = timeLeft + ' second left'
-      timeLeft--;
-    } else {
-      // Once `timeLeft` gets to 0, set `timerElement` to an empty string
-      timerElement.textContent = ''
-      // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval)
-      // Call the `allDone()` function
-      allDone();
-    }
-  }, 1000);
+        // As long as the `timeLeft` is greater than 1
+        if (timeLeft > 1) {
+            // Set the `textContent` of `timerElement` to show the remaining seconds
+            timerElement.textContent = timeLeft + ' seconds left'
+            // Decrement `timeLeft` by 1
+            timeLeft--;
+        } else if (timeLeft === 1) {
+            // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+            timerElement.textContent = timeLeft + ' second left'
+            timeLeft--;
+        } else {
+            // Once `timeLeft` gets to 0, set `timerElement` to an empty string
+            timerElement.textContent = ''
+            // Use `clearInterval()` to stop the timer
+            clearInterval(timeInterval)
+            // Call the `allDone()` function
+            allDone();
+        }
+    }, 1000);
 }
 
 // Starts the quiz questions on clicking start quiz button
@@ -89,9 +89,9 @@ function resetState() {
     }
 }
 
-answersElement.addEventListener('click', function(event) {
+answersElement.addEventListener('click', function (event) {
     var buttonText = event.target.textContent
-    if (questions[currentQuestion].ans.findIndex(function (element){
+    if (questions[currentQuestion].ans.findIndex(function (element) {
         console.log(element.text, buttonText)
         return element.text === buttonText && element.isCorrect === true
     }) > -1) {
@@ -145,19 +145,16 @@ function allDone() {
     submitHighScores()
 }
 
-// Change this function to submitHighScores
-function submitHighScores() {
+submitButton.addEventListener('click', function (submitHighScores) {
     userScore.push({
-       initials: initials.value, 
-       finalScore: timeLeft
+        initials: initials.value,
+        finalScore: timeLeft
     })
-    localStorage.setItem('initials', JSON.stringify(userScore))
-}
-
-submitButton.addEventListener('click', showHighScores)
+    localStorage.setItem('userScore', JSON.stringify(userScore))
+})
 
 function showHighScores() {
-    userScore = JSON.parse(localStorage.getItem('initials'))
+    userScore = JSON.parse(localStorage.getItem('userScore'))
 
 }
 // Create function showHighScores
